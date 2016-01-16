@@ -1,0 +1,13 @@
+{
+    "name": "samuel/felt_tests",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Samuel Vandamme",
+            "email": "samuel@sava.be"
+        }
+    ],
+    "require": {
+        "fzaninotto/faker": "~1.5"
+    }
+}
