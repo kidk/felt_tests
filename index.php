@@ -12,10 +12,10 @@
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -56,24 +56,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Export</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li><a href="">Nav item</a></li>
-                    <li><a href="">Nav item again</a></li>
-                    <li><a href="">One more nav</a></li>
-                    <li><a href="">Another nav item</a></li>
-                    <li><a href="">More navigation</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li><a href="">Nav item again</a></li>
-                    <li><a href="">One more nav</a></li>
-                    <li><a href="">Another nav item</a></li>
-                </ul>
+
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">Dashboard</h1>
@@ -99,24 +82,42 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
     $(function(){
+        // Data table
         $.ajax({
-            url: '/data.php',
+            url: '/api/table.php',
             data: {
                 format: 'json'
-            },
-            error: function() {
-                $('#info').html('<p>An error has occurred</p>');
             },
             dataType: 'jsonp',
             success: function(data) {
                 table = $("#data");
                 $.each(data, function( index, value ) {
                     table.append("<tr><td>" + value.name + "</td><td>" + value.address + "</td><td>" + value.text + "</td></tr>");
+                });
+            },
+            type: 'GET'
+        });
+
+        // Menu
+        $.ajax({
+            url: '/api/menu.php',
+            data: {
+                format: 'json'
+            },
+            dataType: 'jsonp',
+            success: function(data) {
+                sidebar = $(".sidebar");
+                $.each(data, function( index, group ) {
+                    ul = '<ul class="nav nav-sidebar">';
+                    $.each(group, function( index, item ) {
+                        ul += "<li><a href='#'>" + item + "</a></li>";
+                    });
+                    sidebar.append(ul + "</ul>");
                 });
             },
             type: 'GET'
