@@ -44,10 +44,10 @@
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Help</a></li>
                 </ul>
-                <form class="navbar-form navbar-right" action="login.php" method="POST">
+                <form id="loginForm" class="navbar-form navbar-right" action="login.php" method="POST">
                     <input type="text" class="form-control" name="username" placeholder="username">
                     <input type="password" class="form-control" name="password" placeholder="password">
-                    <input id="login" type="submit" class="form-control btn btn-primary">
+                    <input type="submit" class="form-control btn btn-primary">
                 </form>
             </div>
         </div>
