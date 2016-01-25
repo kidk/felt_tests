@@ -47,7 +47,7 @@
                 <form class="navbar-form navbar-right" action="login.php" method="POST">
                     <input type="text" class="form-control" name="username" placeholder="username">
                     <input type="password" class="form-control" name="password" placeholder="password">
-                    <input type="submit" class="form-control btn btn-primary">
+                    <input id="login" type="submit" class="form-control btn btn-primary">
                 </form>
             </div>
         </div>
