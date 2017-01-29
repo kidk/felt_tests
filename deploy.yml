@@ -1,0 +1,13 @@
+
+connection:
+  host: felt
+  user: samuel
+
+deployment:
+  local: "."
+  remote: "/srv/"
+tasks:
+  - task: DeployUpload
+    chown: :www-data
+  - task: DeployLive
+  - task: DeployClean
